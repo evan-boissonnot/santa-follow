@@ -68,6 +68,32 @@
           "builder": "@angular/build:unit-test"
         }
       }
+    },
+    "santa-gifts": {
+      "projectType": "library",
+      "root": "projects/santa-gifts",
+      "sourceRoot": "projects/santa-gifts/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/santa-gifts/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/santa-gifts/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/santa-gifts/tsconfig.spec.json"
+          }
+        }
+      }
     }
   }
 }
