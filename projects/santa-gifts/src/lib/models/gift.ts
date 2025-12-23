@@ -16,7 +16,7 @@ export const emptyNewGift: NewGift = {
 };
 
 export const giftSchema = schema<NewGift>(context => {
-  required(context.title);
-  minLength(context.description, 100);
+  required(context.title, { message: 'Le titre est obligatoire' });
+  minLength(context.description, 100, { message: 'La description doit contenir au moins 100 caractères' });
 });
 
