@@ -1,12 +1,15 @@
 export interface Gift {
-  id: string;
-  name: string;
-  description: string;
+  id: number;
+  title: string;
+  description: string
 }
 
 export type GiftList = Gift[];
-
 export const emptyGiftList: GiftList = [];
 
-export type AddGift = Omit<Gift, 'id'>;
+export type NewGift = Omit<Gift, 'id'>;
+export const emptyNewGift: NewGift = {
+  title: '',
+  description: ''
+};
 

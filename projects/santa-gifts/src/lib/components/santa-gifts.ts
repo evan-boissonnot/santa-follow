@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { GetListGiftsBusiness } from './services/get-list-gifts.business';
-import { GetListGiftsInfra } from './services/get-list-gifts.infra';
-import { fakeGetListGiftsInfra } from './services/__mocks__/fake-get-list-gifts.infra';
+import { GetListGiftsBusiness } from '../services/get-list-gifts.business';
+import { GetListGiftsInfra } from '../services/get-list-gifts.infra';
+import { fakeGetListGiftsInfra } from '../services/__mocks__/fake-get-list-gifts.infra';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lib-santa-gifts',
@@ -22,6 +23,7 @@ import { fakeGetListGiftsInfra } from './services/__mocks__/fake-get-list-gifts.
           <button
             class="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-600 via-red-600 to-green-600 bg-size-200 bg-pos-0 hover:bg-pos-100 text-white font-bold text-lg rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-500 animate-pulse hover:animate-none border-4 border-yellow-300"
             style="background-size: 200% 100%"
+            (click)="goNewAddNewOne()"
           >
             <span class="text-3xl group-hover:rotate-12 transition-transform duration-300">🎁</span>
             <span class="relative">
@@ -101,8 +103,13 @@ import { fakeGetListGiftsInfra } from './services/__mocks__/fake-get-list-gifts.
   ]
 })
 export class SantaGifts {
+  private readonly router = inject(Router);
   private readonly getListGiftsBusiness = inject(GetListGiftsBusiness);
   protected readonly value = this.getListGiftsBusiness.value;
   protected readonly isLoading = this.getListGiftsBusiness.isLoading;
   protected readonly error = this.getListGiftsBusiness.error;
+
+  goNewAddNewOne(): void {
+    this.router.navigate(['/add-new-gift']);
+  }
 }

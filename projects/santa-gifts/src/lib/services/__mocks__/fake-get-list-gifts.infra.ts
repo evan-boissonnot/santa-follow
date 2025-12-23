@@ -7,9 +7,9 @@ import { GiftList } from "../../models/gift"
 export const fakeGetListGiftsInfra = {
   getAll: (): Observable<GiftList> => {
     return of([
-      { id: '1', name: 'Toy Car', description: 'A small toy car' },
-      { id: '2', name: 'Doll', description: 'A beautiful doll' },
-      { id: '3', name: 'Puzzle', description: 'A 1000-piece puzzle' }
+      { id: 1, title: 'Toy Car', description: 'A small toy car' },
+      { id: 2, title: 'Doll', description: 'A beautiful doll' },
+      { id: 3, title: 'Puzzle', description: 'A 1000-piece puzzle' }
      ]).pipe(delay(500))
   }
 }
