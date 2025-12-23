@@ -3,3 +3,4 @@
  */
 
 export * from './lib/santa-gifts';
+export * from './lib/santa-gifts.routes';

@@ -3,8 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+
+    "prestart": "npm run build:libs",
     "start": "ng serve",
-    "build": "ng build",
+
+    "build:libs:santa-gifts": "ng build santa-gifts",
+    "build:libs": "npm run build:libs:santa-gifts",
+
+    "prebuild": "npm run build:libs",
+    "build": "ng build main-app",
+
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
