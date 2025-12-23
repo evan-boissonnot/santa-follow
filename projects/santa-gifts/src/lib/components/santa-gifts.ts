@@ -60,7 +60,7 @@ import { Router } from '@angular/router';
                 <!-- Card Content -->
                 <div class="p-5">
                   <h3 class="text-xl font-bold text-red-700 mb-3 text-center group-hover:text-green-700 transition-colors">
-                    {{ gift.name }}
+                    {{ gift.title }}
                   </h3>
                   <p class="text-gray-600 text-center leading-relaxed">
                     {{ gift.description }}
