@@ -1,3 +1,5 @@
+import { minLength, required, schema } from "@angular/forms/signals";
+
 export interface Gift {
   id: number;
   title: string;
@@ -12,4 +14,9 @@ export const emptyNewGift: NewGift = {
   title: '',
   description: ''
 };
+
+export const giftSchema = schema<NewGift>(context => {
+  required(context.title);
+  minLength(context.description, 100);
+});
 
