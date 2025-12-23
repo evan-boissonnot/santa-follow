@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
 import { AddGiftBusiness } from '../../services/add-gift.business';
 import { Field, form } from '@angular/forms/signals';
 import { emptyNewGift, giftSchema } from '../../models/gift';
@@ -8,6 +8,7 @@ import { emptyNewGift, giftSchema } from '../../models/gift';
   imports: [Field],
   templateUrl: './add-new-gift.html',
   styleUrl: './add-new-gift.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     AddGiftBusiness
   ]
