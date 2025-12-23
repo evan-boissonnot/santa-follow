@@ -2,22 +2,16 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo/Title -->
-      <div class="flex items-center space-x-2">
+      <a
+        routerLink="/"
+        class="flex items-center space-x-2 hover:opacity-90 transition-opacity cursor-pointer"
+      >
         <span class="text-3xl">🎅</span>
         <span class="text-white font-bold text-xl tracking-wide">Santa Follow</span>
-      </div>
+      </a>
 
       <!-- Menu Items -->
       <div class="hidden md:flex space-x-1">
-        <a
-          routerLink="/"
-          routerLinkActive="bg-white text-red-700 shadow-md"
-          class="px-4 py-2 rounded-lg text-white font-medium hover:bg-red-800 hover:text-yellow-200 transition-all duration-300 flex items-center space-x-2"
-        >
-          <span>🏠</span>
-          <span>Accueil</span>
-        </a>
-
         <a
           routerLink="/gifts"
           routerLinkActive="bg-white text-red-700 shadow-md"
@@ -77,17 +71,6 @@
   @if (isMobileMenuOpen()) {
     <div class="md:hidden bg-red-800 border-t border-red-900">
       <div class="px-2 pt-2 pb-3 space-y-1">
-        <a
-          routerLink="/"
-          routerLinkActive="bg-white text-red-700"
-          [routerLinkActiveOptions]="{ exact: true }"
-          (click)="closeMobileMenu()"
-          class="block px-3 py-2 rounded-md text-white font-medium hover:bg-red-700 transition-colors flex items-center space-x-2"
-        >
-          <span>🏠</span>
-          <span>Accueil</span>
-        </a>
-
         <a
           routerLink="/les-cadeaux"
           routerLinkActive="bg-white text-red-700"
