@@ -110,6 +110,6 @@ export class SantaGifts {
   protected readonly error = this.getListGiftsBusiness.error;
 
   goNewAddNewOne(): void {
-    this.router.navigate(['/add-new-gift']);
+    this.router.navigate(['/gifts/add-new-one']);
   }
 }

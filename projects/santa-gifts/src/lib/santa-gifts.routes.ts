@@ -8,7 +8,7 @@ export const giftsRoute: Routes = [
     component: SantaGifts
   },
   {
-    path: 'add-new-gift',
+    path: 'add-new-one',
     component: AddNewGift
   }
 ]
