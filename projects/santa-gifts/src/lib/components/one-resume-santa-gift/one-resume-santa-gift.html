@@ -4,8 +4,18 @@
   (click)="goToEditOne(gift.id)"
   class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-red-200 overflow-hidden group">
   <!-- Card Header -->
-  <div class="bg-gradient-to-r from-red-600 to-green-600 p-4 text-center">
+  <div class="bg-gradient-to-r from-red-600 to-green-600 p-4 text-center relative">
     <span class="text-4xl group-hover:scale-125 transition-transform duration-300 inline-block">🎁</span>
+
+    <!-- Delete Button -->
+    <button
+      (click)="deleteOne($event, gift.id)"
+      class="absolute top-2 right-2 bg-red-700 hover:bg-red-800 text-white p-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 hover:rotate-12 border-2 border-white group/delete"
+      aria-label="Supprimer le cadeau"
+      title="Supprimer ce cadeau"
+    >
+      <span class="text-xl group-hover/delete:scale-125 transition-transform duration-300 inline-block">🗑️</span>
+    </button>
   </div>
 
   <!-- Card Content -->

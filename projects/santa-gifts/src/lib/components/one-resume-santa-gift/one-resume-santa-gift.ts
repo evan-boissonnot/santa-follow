@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { Gift } from '../../models/gift';
 import { Router } from '@angular/router';
 
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class OneResumeSantaGift {
   private readonly router = inject(Router);
   item = input.required<Gift>();
+  toDelete = output<number>();
 
   /**
    * Navigate to edit one gift
@@ -19,5 +20,10 @@ export class OneResumeSantaGift {
    */
   goToEditOne(id: number): void {
     this.router.navigate(['/gifts/edit-one', id]);
+  }
+
+  deleteOne(event: PointerEvent, id: number): void {
+  event.stopPropagation()
+   this.toDelete.emit(id);
   }
 }

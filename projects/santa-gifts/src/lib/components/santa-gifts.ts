@@ -52,7 +52,7 @@ import { OneResumeSantaGift } from './one-resume-santa-gift/one-resume-santa-gif
         @if (list.length > 0) {
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @for(gift of list; track gift.id) {
-              <lib-one-resume-santa-gift [item]="gift" />
+              <lib-one-resume-santa-gift [item]="gift" (toDelete)="deleteOne($event)" />
             }
           </div>
         }
@@ -88,5 +88,10 @@ export class SantaGifts {
 
   goNewAddNewOne(): void {
     this.router.navigate(['/gifts/add-new-one']);
+  }
+
+  deleteOne(id: number): void {
+    this.value.update((currentList) => currentList.filter(gift => gift.id !== id));
+    // Ajouter ici la logique pour supprimer le cadeau via un service business
   }
 }
