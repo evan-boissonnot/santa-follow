@@ -1,7 +1,8 @@
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
-import { emptyNewGift, NewGift } from '../models/gift';
+import { emptyNewGift, Gift, NewGift } from '../models/gift';
 import { AddGiftInfra } from './add-gift.infra';
 import { firstValueFrom } from 'rxjs';
+import { ResultApi } from 'dtbc-library';
 
 @Injectable()
 export class AddGiftBusiness {
@@ -17,7 +18,7 @@ export class AddGiftBusiness {
   /**
    * Save a new gift
    */
-  async save(gift: NewGift): Promise<void> {
-    await firstValueFrom(this.addGiftInfra.add(gift));
+  async save(gift: NewGift): Promise<ResultApi<Gift>> {
+    return await firstValueFrom(this.addGiftInfra.add(gift));
   }
 }

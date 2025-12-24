@@ -94,6 +94,32 @@
           }
         }
       }
+    },
+    "dtbc-library": {
+      "projectType": "library",
+      "root": "projects/dtbc-library",
+      "sourceRoot": "projects/dtbc-library/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dtbc-library/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/dtbc-library/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/dtbc-library/tsconfig.spec.json"
+          }
+        }
+      }
     }
   }
 }

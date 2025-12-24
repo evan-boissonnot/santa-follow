@@ -12,6 +12,9 @@
     "isolatedModules": true,
     "experimentalDecorators": true,
     "paths": {
+      "dtbc-library": [
+        "./dist/dtbc-library"
+      ],
       "santa-gifts": [
         "./dist/santa-gifts"
       ]
@@ -39,6 +42,12 @@
     },
     {
       "path": "./projects/santa-gifts/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/dtbc-library/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/dtbc-library/tsconfig.spec.json"
     }
   ]
 }

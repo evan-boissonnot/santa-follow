@@ -7,8 +7,9 @@
     "prestart": "npm run build:libs",
     "start": "ng serve",
 
+    "build:libs:main-lib": "ng build dtbc-library",
     "build:libs:santa-gifts": "ng build santa-gifts",
-    "build:libs": "npm run build:libs:santa-gifts",
+    "build:libs": " npm run build:libs:main-lib && npm run build:libs:santa-gifts",
 
     "prebuild": "npm run build:libs",
     "build": "ng build main-app",
