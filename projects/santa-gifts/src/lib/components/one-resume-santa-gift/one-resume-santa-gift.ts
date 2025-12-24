@@ -18,6 +18,6 @@ export class OneResumeSantaGift {
    * @param id Gift id
    */
   goToEditOne(id: number): void {
-    this.router.navigate(['/gifts/edit', id]);
+    this.router.navigate(['/gifts/edit-one', id]);
   }
 }
