@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
 import { AddGiftBusiness } from '../../services/add-gift.business';
 import { customError, Field, form, submit } from '@angular/forms/signals';
-import { emptyNewGift, giftSchema } from '../../models/gift';
+import { emptyNewGift, newGiftSchema } from '../../models/gift';
 import { AddGiftInfra } from '../../services/add-gift.infra';
 
 @Component({
@@ -18,7 +18,7 @@ import { AddGiftInfra } from '../../services/add-gift.infra';
 export class AddNewGift {
   private readonly addGiftBusiness = inject(AddGiftBusiness);
   private readonly newGift = this.addGiftBusiness.prepareOne();
-  protected readonly giftForm = form(this.newGift, giftSchema);
+  protected readonly giftForm = form(this.newGift, newGiftSchema);
 
 
   async save(event: SubmitEvent): Promise<void> {

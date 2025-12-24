@@ -3,10 +3,11 @@ import { GetListGiftsBusiness } from '../services/get-list-gifts.business';
 import { GetListGiftsInfra } from '../services/get-list-gifts.infra';
 import { fakeGetListGiftsInfra } from '../services/__mocks__/fake-get-list-gifts.infra';
 import { Router } from '@angular/router';
+import { OneResumeSantaGift } from './one-resume-santa-gift/one-resume-santa-gift';
 
 @Component({
   selector: 'lib-santa-gifts',
-  imports: [],
+  imports: [OneResumeSantaGift],
   template: `
     <div class="min-h-screen bg-gradient-to-b from-red-50 via-green-50 to-white py-8 px-4">
       <div class="max-w-7xl mx-auto">
@@ -51,31 +52,7 @@ import { Router } from '@angular/router';
         @if (list.length > 0) {
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @for(gift of list; track gift.id) {
-              <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-red-200 overflow-hidden group">
-                <!-- Card Header -->
-                <div class="bg-gradient-to-r from-red-600 to-green-600 p-4 text-center">
-                  <span class="text-4xl group-hover:scale-125 transition-transform duration-300 inline-block">🎁</span>
-                </div>
-
-                <!-- Card Content -->
-                <div class="p-5">
-                  <h3 class="text-xl font-bold text-red-700 mb-3 text-center group-hover:text-green-700 transition-colors">
-                    {{ gift.title }}
-                  </h3>
-                  <p class="text-gray-600 text-center leading-relaxed">
-                    {{ gift.description }}
-                  </p>
-                </div>
-
-                <!-- Card Footer -->
-                <div class="bg-gradient-to-r from-green-50 to-red-50 px-5 py-3 text-center">
-                  <span class="text-sm text-gray-500 flex items-center justify-center gap-2">
-                    <span>✨</span>
-                    <span>Cadeau magique</span>
-                    <span>✨</span>
-                  </span>
-                </div>
-              </div>
+              <lib-one-resume-santa-gift [item]="gift" />
             }
           </div>
         }
