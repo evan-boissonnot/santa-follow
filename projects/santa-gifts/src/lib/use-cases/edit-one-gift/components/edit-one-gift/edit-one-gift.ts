@@ -1,11 +1,12 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, linkedSignal, signal, WritableSignal } from '@angular/core';
 import { GetOneGiftBusiness } from '../../services/get-one-gift.business';
 import { GetGiftIdImpl } from '../../services/get-gift-id';
 import { GetOneGiftInfra } from '../../services/get-one-gift.infra';
 import { customError, Field, form, submit } from '@angular/forms/signals';
-import { giftSchema, newGiftSchema } from '../../../../models/gift';
+import { Gift, giftSchema, newGiftSchema } from '../../../../models/gift';
 import { EditOneGiftInfra } from '../../services/edit-one-gift.infra';
 import { EditOneGiftBusiness } from '../../services/edit-one-gift.business';
+import { fakeGetOneGift } from '../../services/__mocks__/fake-get-one-gift';
 
 @Component({
   selector: 'lib-edit-one-gift',
@@ -15,7 +16,7 @@ import { EditOneGiftBusiness } from '../../services/edit-one-gift.business';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     GetGiftIdImpl,
-    GetOneGiftInfra,
+    { provide: GetOneGiftInfra, useValue: fakeGetOneGift },
     GetOneGiftBusiness,
     EditOneGiftInfra,
     EditOneGiftBusiness
@@ -24,25 +25,23 @@ import { EditOneGiftBusiness } from '../../services/edit-one-gift.business';
 export class EditOneGift {
   private readonly editGiftBusiness = inject(EditOneGiftBusiness);
   private readonly giftSignal = inject(GetOneGiftBusiness).getOne();
-  protected readonly gitFormSignal = computed(() => {
-    const gift = this.giftSignal();
 
-    if(gift) {
-      const giftSignal = signal(gift);
-      return form(giftSignal, giftSchema);
-    }
-
-    return null;
-  });
+  protected readonly giftForm = form(this.giftSignal, giftSchema);
 
   async save(event: SubmitEvent): Promise<void> {
     event.preventDefault();
 
-    const giftForm = this.gitFormSignal();
+    const giftForm = this.giftForm();
 
-    if(giftForm && giftForm().valid()) {
-      await submit(giftForm, async (f) => {
-        const returnApi = await this.editGiftBusiness.editOne(giftForm().value());
+    if(giftForm && giftForm.valid()) {
+      await submit(this.giftForm, async (f) => {
+        const value = giftForm.value();
+
+        if(! value) {
+          return undefined;
+        }
+
+        const returnApi = await this.editGiftBusiness.editOne(value);
 
         if(returnApi.error) {
           return customError({
